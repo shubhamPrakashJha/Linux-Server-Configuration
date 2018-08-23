@@ -5,7 +5,7 @@ _Configure Amazon Lightsail Linux Server To host Web App_
 
 **PUBLIC IP :**  `13.232.118.216`
 
-**INITIAL LOGIN URL FOR SHELL :** `ssh -i ~/.ssh/LightsailDefaultPrivateKey.pem ubuntu@13.232.118.216`
+**INITIAL LOGIN URL FOR SHELL :** `ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem`
 
 ## PROCEDURE
 
@@ -26,7 +26,7 @@ _Configure Amazon Lightsail Linux Server To host Web App_
 ### STEP 2 : SSH into your server
 Use these commands to SSH into your server from your console
 ```commandline
-ssh -i ~/.ssh/LightsailDefaultPrivateKey.pem ubuntu@13.232.118.216
+ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem
 ```
 
 ### _Securing Your Server________________________
