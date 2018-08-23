@@ -65,3 +65,44 @@ sudo reboot
     ```commandline
     ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem -p 2200
     ```
+    
+### STEP 5 : Configure the Uncomplicated Firewall (UFW) 
+Allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP 
+(port 123)
+* Check UFW status
+    ```commandline
+    sudo ufw status
+    ```
+* Block all incoming connections on all ports
+    ```commandline
+    sudo ufw default deny incoming
+    ```
+* Allow outgoing connection on all ports
+    ```commandline
+    sudo ufw default allow outgoing
+    ```
+* Allow incoming connection for SSH on port 2200
+    ```commandline
+    sudo ufw allow 2200/tcp
+    ```
+* Allow incoming connections for HTTP on port 80
+    ```commandline
+    sudo ufw allow www
+    ```
+* Allow incoming connection for NTP on port 123
+    ```commandline
+    sudo ufw allow ntp
+    ```
+* check the rules that have been added before enabling the firewall
+    ```commandline
+    sudo ufw show added
+    ```
+* enable the firewall
+    ```commandline
+    sudo ufw enable
+    ```
+* Check UFW status again
+    ```commandline
+    sudo ufw status
+    ```
+
