@@ -22,6 +22,14 @@ _Configure Amazon Lightsail Linux Server To host Web App_
 * save this .pem file to `~/.ssh` directory
 
 ### STEP 2 : SSH into your server
+Use these commands to SSH into your server from your console
 ```commandline
 ssh -i ~/.ssh/LightsailDefaultPrivateKey.pem ubuntu@13.232.118.216
+```
+
+### STEP 3 : Update all currently installed packages
+Use these commands to update installed packages
+```commandline
+sudo apt-get update
+sudo apt-get upgrade
 ```
