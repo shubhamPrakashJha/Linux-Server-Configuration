@@ -9,6 +9,11 @@ _Configure Amazon Lightsail Linux Server To host Web App_
 
 **UPDATED LOGIN URL FOR SHELL AFTER STEP 4 :** `ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem -p 2200`
 
+**USERNAME :**  `grader`
+
+**PASSWORD :**  `grader`
+
+
 ## PROCEDURE
 
 ### _Getting Your Server________________________
@@ -104,5 +109,13 @@ Allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP
 * Check UFW status again
     ```commandline
     sudo ufw status
+    ```
+    
+### _GIVING GRADER SERVER ACCESS________________________
+Giving `grader` access to log in to my server for reviewing my project.
+#### STEP 6 : Create a new user account named `grader`
+* Create user `grader`
+    ```commandline
+    sudo adduser grader
     ```
 
