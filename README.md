@@ -9,6 +9,8 @@ _Configure Amazon Lightsail Linux Server To host Web App_
 
 ## PROCEDURE
 
+### _Getting Your Server________________________
+
 ### STEP 1 : Start a new Ubuntu Linux server instance on Amazon Lightsail
 * Log in to Lightsail
 * Create an instance
@@ -26,6 +28,8 @@ Use these commands to SSH into your server from your console
 ```commandline
 ssh -i ~/.ssh/LightsailDefaultPrivateKey.pem ubuntu@13.232.118.216
 ```
+
+### _Securing Your Server________________________
 
 ### STEP 3 : Update all currently installed packages
 Use these commands to update installed packages
