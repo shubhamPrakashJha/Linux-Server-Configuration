@@ -118,4 +118,27 @@ Giving `grader` access to log in to my server for reviewing my project.
     ```commandline
     sudo adduser grader
     ```
+#### STEP 7 : Give `grader` the permission to `sudo`
+* If you are signed in using a non-root user with sudo privileges, type
+    ```commandline
+    sudo visudo
+    ```
+* Search for the line that looks like this:
+    ```commandline
+    root    ALL=(ALL:ALL) ALL
+    ```
+* Below this line, copy the format you see here, changing only the word 
+"root" to reference the new user that you would like to give sudo privileges to:
+    ```commandline
+    root    ALL=(ALL:ALL) ALL
+    newuser ALL=(ALL:ALL) ALL
+    ```
+* Sign In to user `grader`
+    ```commandline
+    sudo su - grader
+    ```
+* Sign Out of user `grader`
+    ```commandline
+    exit
+    ```
 
