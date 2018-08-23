@@ -21,3 +21,7 @@ _Configure Amazon Lightsail Linux Server To host Web App_
 * Download `private key` of SSH KEY PAIR.
 * save this .pem file to `~/.ssh` directory
 
+### STEP 2 : SSH into your server
+```commandline
+ssh -i ~/.ssh/LightsailDefaultPrivateKey.pem ubuntu@13.232.118.216
+```
