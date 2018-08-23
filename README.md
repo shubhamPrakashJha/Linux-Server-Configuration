@@ -7,6 +7,8 @@ _Configure Amazon Lightsail Linux Server To host Web App_
 
 **INITIAL LOGIN URL FOR SHELL :** `ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem`
 
+**UPDATED LOGIN URL FOR SHELL AFTER STEP 4 :** `ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem -p 2200`
+
 ## PROCEDURE
 
 ### _Getting Your Server________________________
@@ -41,3 +43,25 @@ If *** System restart required *** is displayed at login, run:
 ```commandline
 sudo reboot
 ```
+
+### STEP 4 : Change the SSH port from 22 to 2200
+* Firstly, Open port 2200 in `Lightsail > Networkind > Firewall` to avoid locking yourself out by adding:
+    ```textmate
+    Application   Protocol    Port range
+    Custom        TCP	  2200
+    ```
+* Open `/etc/ssh/sshd_config` file using :
+
+    ```commandline
+    sudo nano /etc/ssh/sshd_config
+    ```
+* Change the line `Port 22` to `Port 2200`
+* Then restart the SSH service:
+    ```commandline
+    sudo service ssh restart
+    ```
+* New command to login to the server:
+
+    ```commandline
+    ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem -p 2200
+    ```
