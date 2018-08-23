@@ -13,7 +13,7 @@ _Configure Amazon Lightsail Linux Server To host Web App_
 
 ### _Getting Your Server________________________
 
-### STEP 1 : Start a new Ubuntu Linux server instance on Amazon Lightsail
+#### STEP 1 : Start a new Ubuntu Linux server instance on Amazon Lightsail
 * Log in to Lightsail
 * Create an instance
 * First, choose "OS Only" (rather than "Apps + OS"). Second, choose Ubuntu as the operating system.
@@ -25,26 +25,26 @@ _Configure Amazon Lightsail Linux Server To host Web App_
 * Download `private key` of SSH KEY PAIR.
 * save this .pem file to `~/.ssh` directory
 
-### STEP 2 : SSH into your server
-Use these commands to SSH into your server from your console
-```commandline
-ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem
-```
+#### STEP 2 : SSH into your server
+* Use these commands to SSH into your server from your console
+    ```commandline
+    ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem
+    ```
 
 ### _Securing Your Server________________________
 
-### STEP 3 : Update all currently installed packages
-Use these commands to update installed packages
-```commandline
-sudo apt-get update
-sudo apt-get upgrade
-```
-If *** System restart required *** is displayed at login, run:
-```commandline
-sudo reboot
-```
+#### STEP 3 : Update all currently installed packages
+* Use these commands to update installed packages
+    ```commandline
+    sudo apt-get update
+    sudo apt-get upgrade
+    ```
+* If *** System restart required *** is displayed at login, run:
+    ```commandline
+    sudo reboot
+    ```
 
-### STEP 4 : Change the SSH port from 22 to 2200
+#### STEP 4 : Change the SSH port from 22 to 2200
 * Firstly, Open port 2200 in `Lightsail > Networkind > Firewall` to avoid locking yourself out by adding:
     ```textmate
     Application   Protocol    Port range
@@ -66,7 +66,7 @@ sudo reboot
     ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem -p 2200
     ```
     
-### STEP 5 : Configure the Uncomplicated Firewall (UFW) 
+#### STEP 5 : Configure the Uncomplicated Firewall (UFW) 
 Allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP 
 (port 123)
 * Check UFW status
