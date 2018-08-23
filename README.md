@@ -37,3 +37,7 @@ Use these commands to update installed packages
 sudo apt-get update
 sudo apt-get upgrade
 ```
+If *** System restart required *** is displayed at login, run:
+```commandline
+sudo reboot
+```
