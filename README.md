@@ -335,4 +335,9 @@ Enable Key Based Authentication
             sudo su - postgres
             psql
             ```
-    
+
+#### STEP 11 : Install git
+* Install git using command:
+    ```commandline
+    sudo apt-get install git
+    ```
