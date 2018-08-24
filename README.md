@@ -210,20 +210,23 @@ Enable Key Based Authentication
     ```commandline
     sudo apt-get install apache2
     ```
-* Confirm Apache is working by replacing `public_ip` with your public IP and visiting : 
-    ```commandline
-    http://public_ip:80
-    ```
-* You should see the following page: 
-    ![apacheConfig](img/apache.png)
-    Apache, by default, serves its files from the `/var/www/html`. Apache just returns a file requested or the `index.html` file if no file is defined
+    * Confirm Apache is working by replacing `public_ip` with your public IP and visiting : 
+        ```commandline
+        http://public_ip:80
+        ```
+    * You should see the following page: 
+        ![apacheConfig](img/apache.png)
+        Apache, by default, serves its files from the `/var/www/html`. Apache just returns a file requested or the `index.html` file if no file is defined
 
 * Install the `libapache2-mod-wsgi` package:
     ```commandline
     sudo apt-get install libapache2-mod-wsgi
     ```
     It configure Apache to hand-off certain requests to an application handler - mod_wsgi
-    
+    * If project is built using `Python 3` use this instead:
+        ```commandline
+        sudo apt-get install libapache2-mod-wsgi-py3
+        ```
 * configure Apache to handle requests using the WSGI module by editing `/etc/apache2/sites-enabled/000-default.conf` file.
     1. open `/etc/apache2/sites-enabled/000-default.conf` file
         ```commandline
@@ -237,34 +240,34 @@ Enable Key Based Authentication
         ```commandline
         sudo apache2ctl restart
         ```
-* To test if you have your Apache configuration correct you can write a very basic WSGI application :
-    
-    WSGI is a specification that describes how a web server communicates with web applications. Most Python web frameworks are WSGI compliant including Flask and Django. Despite having the extension .wsgi, these are just Python applications
-    
-    1. defined the name of the file you need to write within your Apache configuration by using the `WSGIScriptAlias` directive
-        ```commandline
-        WSGIScriptAlias /test_wsgi /var/www/html/test_wsgi.py
-        ```
-        which is already done in above step
-    1. Create the /var/www/html/myapp.wsgi file using the command : 
-        ```commandline
-        sudo nano /var/www/html/test_wsgi.py
-        ```
-    1. Within this file, write the following application: 
-        ```python
-           def application(environ, start_response):
-               status = '200 OK'
-               output = 'Hello World From WSGI!'
-
-               response_headers = [('Content-type', 'text/plain'), ('Content-Length', str(len(output)))]
-               start_response(status, response_headers)
-
-               return [output]
-        ```
-    1. Finally, restart Apache 
-        ```commandline
-        sudo apache2ctl restart
-        ```
-    1. If everything goes as expected, open your favorite web browser and type the URL `http://your-server-ip/test_wsgi` and hit `Enter`, You will get the newly created application:
-        ![wsgiConfig](img/wsgi.png)
+    * To test if you have your Apache configuration correct you can write a very basic WSGI application :
         
+        WSGI is a specification that describes how a web server communicates with web applications. Most Python web frameworks are WSGI compliant including Flask and Django. Despite having the extension .wsgi, these are just Python applications
+        
+        1. defined the name of the file you need to write within your Apache configuration by using the `WSGIScriptAlias` directive
+            ```commandline
+            WSGIScriptAlias /test_wsgi /var/www/html/test_wsgi.py
+            ```
+            which is already done in above step
+        1. Create the /var/www/html/myapp.wsgi file using the command : 
+            ```commandline
+            sudo nano /var/www/html/test_wsgi.py
+            ```
+        1. Within this file, write the following application: 
+            ```python
+               def application(environ, start_response):
+                   status = '200 OK'
+                   output = 'Hello World From WSGI!'
+    
+                   response_headers = [('Content-type', 'text/plain'), ('Content-Length', str(len(output)))]
+                   start_response(status, response_headers)
+    
+                   return [output]
+            ```
+        1. Finally, restart Apache 
+            ```commandline
+            sudo apache2ctl restart
+            ```
+        1. If everything goes as expected, open your favorite web browser and type the URL `http://your-server-ip/test_wsgi` and hit `Enter`, You will get the newly created application:
+            ![wsgiConfig](img/wsgi.png)
+            
