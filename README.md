@@ -242,7 +242,7 @@ Enable Key Based Authentication
         ```
     * To test if you have your Apache configuration correct you can write a very basic WSGI application :
         
-        WSGI is a specification that describes how a web server communicates with web applications. Most Python web frameworks are WSGI compliant including Flask and Django. Despite having the extension .wsgi, these are just Python applications
+        _WSGI is a specification that describes how a web server communicates with web applications. Most Python web frameworks are WSGI compliant including Flask and Django. Despite having the extension .wsgi, these are just Python applications_
         
         1. defined the name of the file you need to write within your Apache configuration by using the `WSGIScriptAlias` directive
             ```commandline
@@ -270,4 +270,69 @@ Enable Key Based Authentication
             ```
         1. If everything goes as expected, open your favorite web browser and type the URL `http://your-server-ip/test_wsgi` and hit `Enter`, You will get the newly created application:
             ![wsgiConfig](img/wsgi.png)
+
+
+#### STEP 11 : Install and configure PostgreSQL
+* Install PostgreSQL with:
+    ```commandline
+    sudo apt-get install postgresql postgresql-contrib
+    ```
+    * Do not allow remote connections
+        
+        _A simple way to remove a potential attack vector is to not allow remote connections to the database. This is the current default when installing PostgreSQL from the Ubuntu repositories._ 
+        
+        1. Open the postgres config file
+            ```commandline
+            sudo nano /etc/postgresql/9.5/main/pg_hba.conf
+            ```
+        1. double check that no remote connections are allowed by looking in the host based authentication file:
+            ![wsgiConfig](img/psqlDenyRemote.png)
+        
+        1. As you can see, the first two security lines specify "local" as the scope that they apply to. This means they are using Unix/Linux domain sockets.
+        
+        1. The second two declarations are remote, but if we look at the hosts that they apply to (127.0.0.1/32 and ::1/128), we see that these are interfaces that specify the local machine.
             
+    * Create a new database user named `catalog` that has limited permissions to your catalog application database.
+        
+        1. Create a PostgreSQL user(role) called `catalog` with:
+            ```commandline
+            sudo -u postgres createuser -P catalog
+            ```
+            you are `Prompted` for a password(-P). This creates a normal user that can't create databases, roles (users).
+        1. create the database `catalog` with `catalog` as owner.
+            ```commandline
+            sudo -u postgres createdb -O catalog catalog
+            ```
+    * To Check If Databse and User Created Successfully:
+        
+        * Log into PostgreSQL using:
+            ```
+            sudo su - postgres
+            psql
+            ```
+        * List all the current **Owners**(Role) and their attributes by typing:
+            ```
+            \du
+            ```
+        * Select **Owner**(Role) `catalog`:
+            ```
+            \c catalog
+            ```
+        * Show all **databases** having `catalog` as owner:
+            ```
+            \l
+            ```
+        * Select **Database** `catalog`:
+            ```
+            \c catalog
+            ```
+        * Show all **tables** within `catalog` database:
+            ```
+            \c dt
+            ```
+        * Log out PostgreSQL to follow along with this section:
+            ```
+            sudo su - postgres
+            psql
+            ```
+    
