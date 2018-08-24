@@ -80,8 +80,7 @@ _Configure Amazon Lightsail Linux Server To host Web App_
     ```
     
 #### STEP 5 : Configure the Uncomplicated Firewall (UFW) 
-Allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP 
-(port 123)
+Allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123)
 * Check UFW status
     ```commandline
     sudo ufw status
@@ -152,8 +151,7 @@ Giving `grader` access to log in to my server for reviewing my project.
 
 #### STEP 8 : Create an SSH key pair for `grader` using the `ssh-keygen` tool
 Enable Key Based Authentication
-* Generate SSH Key Pairs locally on your system using application 
-`ssh-keygen`, type:
+* Generate SSH Key Pairs locally on your system using application `ssh-keygen`, type:
     ```commandline
     ssh-keygen
     ```
@@ -195,3 +193,15 @@ Enable Key Based Authentication
     sudo chmod 700 /home/grader/.ssh
     sudo chmod 644 /home/grader/.ssh/authorized_keys
     ```
+
+### _PREPARE TO DEPLOY YOUR PROJECT________________________
+#### STEP 9 : Configure the local timezone to UTC
+* Check the timezone
+    ```commandline
+    date
+    ```
+* If it's not UTC change it to UTC using: 
+    ```commandline
+    sudo timedatectl set-timezone UTC
+    ```
+
