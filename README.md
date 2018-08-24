@@ -7,11 +7,19 @@ _Configure Amazon Lightsail Linux Server To host Web App_
 
 **INITIAL LOGIN URL FOR SHELL :** `ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem`
 
+**SSH PORT AFTER STEP 4 :** `2200`
+
 **UPDATED LOGIN URL FOR SHELL AFTER STEP 4 :** `ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem -p 2200`
 
 **USERNAME :**  `grader`
 
 **PASSWORD :**  `grader`
+
+**Login command for Grader :**  `ssh grader@13.232.118.216 -i ~/.ssh/graderKeyPair -p 2200`
+
+**PASSPHRASE :**  `grader`
+
+
 
 
 ## PROCEDURE
@@ -142,3 +150,48 @@ Giving `grader` access to log in to my server for reviewing my project.
     exit
     ```
 
+#### STEP 8 : Create an SSH key pair for `grader` using the `ssh-keygen` tool
+Enable Key Based Authentication
+* Generate SSH Key Pairs locally on your system using application 
+`ssh-keygen`, type:
+    ```commandline
+    ssh-keygen
+    ```
+* Enter file in which to save the key (/home/user/
+.ssh/id_rsa):
+    ```commandline
+    /home/user/.ssh/graderKeyPair
+    ```
+* Two Files will be created inside `~/.ssh/` i.e `graderKeyPair` `graderKeyPair.pub`
+
+* Place the Public Key on our remote server so that SSH can use it to log in
+    1. make .ssh dir inside `/home/grader/`
+        ```commandline
+        sudo mkdir /home/grader/.ssh
+        ```
+    2. create `authorized_keys` file inside `/home/grader/.ssh`
+        ```commandline
+        sudo touch /home/grader/.ssh/authorized_keys
+        ```
+        this is a special file will store all the public keys this account 
+        is allowed to use for authentication.
+    3. Copy the contents of `/home/user/.ssh/graderKeyPair.pub` from the local machine 
+    
+    4. open `authorized_keys` file inside `/home/grader/.ssh`
+        ```commandline
+        sudo nano /home/grader/.ssh/authorized_keys
+        ```
+    
+    5. paste Copied Content into `/home/grader/.ssh/authorized_keys` file
+        
+
+* Set permission of `.ssh` & `authorized_keys` so that other user can not gain access to your account
+    ```commmandline
+    sudo chmod 700 /home/grader/.ssh
+    sudo chmod 644 /home/grader/.ssh/authorized_keys
+    ```
+* Changer ownership of `.ssh` & `authorized_keys` grader so that grader can gain access to these file
+    ```commmandline
+    sudo chmod 700 /home/grader/.ssh
+    sudo chmod 644 /home/grader/.ssh/authorized_keys
+    ```
