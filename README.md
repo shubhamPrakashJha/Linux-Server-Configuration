@@ -349,3 +349,60 @@ Enable Key Based Authentication
     ```commandline
     sudo apt-get install git
     ```
+
+### _Deploy the Item Catalog project________________________
+
+#### STEP 13 : Clone and setup your Catalog project from the Github repository you created earlier in this Nanodegree program
+* Clone the Repository
+    1. Go to the www dirrectory and create a directory catalog:
+        ```
+        cd /var/www/
+        ```
+        ```
+        sudo mkdir catalog
+        ```
+        ```
+        cd catalog
+        ```
+    2. use git clone to download Catalog Project & rename it to catalog
+        ```
+        sudo git clone https://github.com/shubhamPrakashJha/Cricket-Player-Info.git
+        ```
+        ```
+        sudo mkdir catalog
+        ```
+        ```
+        sudo mv Cricket-Player-Info/* catalog
+        ```
+        ```
+        sudo rm -r Cricket-Player-Info/
+        ```
+        ```
+        cd catalog/
+        ```
+* Setup the Repository
+    1. change `application.py` to `init.py`
+        ```
+        sudo mv application.py __init__.py
+        ```
+    2. Edit engine in `init.py`, `database_setup.py` and `lotsofplayerswithuser.py`
+        * use `$ sudo nano` on each of the mentioned files, and find the line.
+            ```
+            engine = create_engine('sqlite:///teamplayerwithuser.db')
+            ```
+        * and replace them with
+            ```
+            engine = create_engine(postgresql://catalog:grader@localhost/catalog')
+            ```
+        `password` is not shown for security reasons.
+    3. Modify init.py so Google+ login works.
+        * Open `__init__.py`
+            ```
+            sudo nano /var/www/catalog/catalog/__init__.py
+            ```
+        * find any reference to `client_secrets.json` and replace it with its full path name
+            ```
+            /var/www/catalog/catalog/client_secrets.json
+            ```
+        * find the line `app.debug = True` and delete it.
+        
