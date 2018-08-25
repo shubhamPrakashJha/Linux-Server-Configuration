@@ -405,7 +405,25 @@ Enable Key Based Authentication
             /var/www/catalog/catalog/client_secrets.json
             ```
         * find the line `app.debug = True` and delete it.
-        
+    3. Update the Google OAuth `client_secrets` file
+        * go to your Google Console
+        * select your project
+        * Select `API & Services` > `credentials`
+        * Select Your project Client ID
+        * In `Authorized JavaScript origins` add following `url`
+            ```
+            http://13.232.118.216
+            http://13.232.118.216.xip.io
+            ```
+        * In `Authorized redirect URIs` add:
+            ```
+            http://13.232.118.216.xip.io/login
+            http://13.232.118.216.xip.io/gconnect
+            ```
+        * Click `Save`
+        * Click on `DOWNLOAD JSON` to download updated `client_secret` file
+        * Replace the content of old `client_secret` file with the content of downloaded `client_secret` file.
+    
 #### STEP 14 : Set it up in your server so that it functions correctly when visiting your server’s IP address in a browser. Make sure that your `.git` directory is not publicly accessible via a browser!
 * Install packages: Flask and SQLAlchemy using following command:
      ```
