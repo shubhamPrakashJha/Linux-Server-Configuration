@@ -1,24 +1,17 @@
 # Linux Server Configuration for Web App
-_Configure Amazon Lightsail Linux Server To host Web App_
+_Configured a baseline installation of Amazon Lightsail Linux Server To host Web Applications. secured the server from a number of attack, installed and configured a database server, and deploy one of my existing web applications onto it._
 
 ## SERVER INFORMATIONS
 
-**PUBLIC IP :**  `13.232.118.216`
+**IP ADDRESS :**  `13.232.118.216`
 
-**INITIAL LOGIN URL FOR SHELL :** `ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem`
+**SSH PORT:** `2200`
 
-**SSH PORT AFTER STEP 4 :** `2200`
+**URL :** [http://13.232.118.216.xip.io/]()
 
-**UPDATED LOGIN URL FOR SHELL AFTER STEP 4 :** `ssh ubuntu@13.232.118.216 -i ~/.ssh/LightsailDefaultPrivateKey.pem -p 2200`
-
-**USERNAME :**  `grader`
-
-**PASSWORD :**  `grader`
+**Grader's SSH KEY LOCATION:** `/home/grader/.ssh`
 
 **Login command for Grader :**  `ssh grader@13.232.118.216 -i ~/.ssh/graderKeyPair -p 2200`
-
-**PASSPHRASE :**  `grader`
-
 
 
 
