@@ -392,7 +392,7 @@ Enable Key Based Authentication
             ```
         * and replace them with
             ```
-            engine = create_engine(postgresql://catalog:grader@localhost/catalog')
+            engine = create_engine('postgresql://catalog:grader@localhost/catalog')
             ```
         `password` is not shown for security reasons.
     3. Modify init.py so Google+ login works.
@@ -406,3 +406,72 @@ Enable Key Based Authentication
             ```
         * find the line `app.debug = True` and delete it.
         
+#### STEP 14 : Set it up in your server so that it functions correctly when visiting your server’s IP address in a browser. Make sure that your `.git` directory is not publicly accessible via a browser!
+* Install packages: Flask and SQLAlchemy using following command:
+     ```
+     sudo apt-get install python-psycopg2 python-flask
+     sudo apt-get install python-sqlalchemy python-pip
+     sudo pip install oauth2client
+     sudo pip install requests
+     sudo pip install httplib2
+     sudo pip install flask-seasurf
+     ```
+* create your database
+     ```
+     python database_setup.py
+     python lotsofplayerswithuser.py
+     ```
+* Create .wsgi file
+     ```
+     cd /var/www/catalog
+     sudo nano catalog.wsgi
+     ```
+     and paste the following
+     ```
+     #!/usr/bin/python
+     import sys
+     import logging
+     logging.basicConfig(stream=sys.stderr)
+     sys.path.insert(0,"/var/www/catalog/")
+     
+     from catalog import app as application
+     application.secret_key = 'some_secret'
+     ```
+* Create a Virtual Host
+
+    To serve the catalog app using the Apache2 web server, you need to create a virtual host configuration file.
+     ```
+     sudo nano /etc/apache2/sites-available/catalog.conf
+     ```
+     and paste the following
+     ```
+     <VirtualHost *:80>
+          ServerName 13.232.118.216
+          ServerAdmin admin@13.232.118.216
+          WSGIScriptAlias / /var/www/catalog/catalog.wsgi
+          <Directory /var/www/catalog/catalog/>
+              Order allow,deny
+              Allow from all
+          </Directory>
+          Alias /static /var/www/catalog/catalog/static
+          <Directory /var/www/catalog/catalog/static/>
+              Order allow,deny
+              Allow from all
+          </Directory>
+          ErrorLog ${APACHE_LOG_DIR}/error.log
+          LogLevel warn
+          CustomLog ${APACHE_LOG_DIR}/access.log combined
+     </VirtualHost>
+     ```
+* Disable the default virtual host
+    ```
+    sudo a2dissite 000-default.conf
+    ```
+* Enable the virtual host just created
+    ```
+    sudo a2ensite catalog.conf
+    ```
+* To make these changes live restart Apache2
+    ```
+    sudo service apache2 restart
+    ```
