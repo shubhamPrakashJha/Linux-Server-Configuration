@@ -399,7 +399,7 @@ Enable Key Based Authentication
             ```
         * find the line `app.debug = True` and delete it.
     3. Update the Google OAuth `client_secrets` file
-        * go to your Google Console
+        * go to your [Google Console](https://console.developers.google.com)
         * select your project
         * Select `API & Services` > `credentials`
         * Select Your project Client ID
@@ -515,3 +515,42 @@ Enable Key Based Authentication
 ## Resources Used:
 
 * [Connect to Your Amazon EC2 Instance](https://docs.aws.amazon.com/quickstarts/latest/vmlaunch/step-2-connect-to-instance.html)
+
+* [How To Edit the Sudoers File on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos)
+* [How To Grant a User Sudo Privileges](https://www.digitalocean.com/community/tutorials/how-to-add-and-delete-users-on-an-ubuntu-14-04-vps)
+* [A Step by Step Guide to Install LAMP](https://blog.udacity.com/2015/03/step-by-step-guide-install-lamp-linux-apache-mysql-python-ubuntu.html)
+* [Configure and Enable a New Virtual Host](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
+* [Do Not Allow Remote Connections](https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps)
+* [Managing PSQL users and rights](https://help.ubuntu.com/community/PostgreSQL)
+* [Make .git directory web inaccessible](https://stackoverflow.com/questions/6142437/make-git-directory-web-inaccessible)
+* [Default public network ports open for specific instance images](https://lightsail.aws.amazon.com/ls/docs/en/articles/understanding-firewall-and-port-mappings-in-amazon-lightsail)
+* [How To Create, Remove, & Manage Tables in PostgreSQL on a Cloud Server](https://www.digitalocean.com/community/tutorials/how-to-create-remove-manage-tables-in-postgresql-on-a-cloud-server)
+* [PostgreSQL Tutorial](http://www.postgresqltutorial.com/)
+* [ Vagrant configuration that starts up a PostgreSQL database in a virtual machine for local application development](https://github.com/jackdb/pg-app-dev-vm)
+* [PostgreSQL_For_Development_With_Vagrant](https://wiki.postgresql.org/wiki/PostgreSQL_For_Development_With_Vagrant)
+* [How to install PostgreSQL on Ubuntu 14.04](https://www.godaddy.com/garage/how-to-install-postgresql-on-ubuntu-14-04/)
+* [aviaryan](https://github.com/aviaryan/flask-postgres-apache-server)
+* [psql: FATAL: database “<user>” does not exist](https://stackoverflow.com/questions/17633422/psql-fatal-database-user-does-not-exist)
+* [How To Install Linux, Apache, MySQL, PHP (LAMP) stack on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-14-04)
+* [How To Install Linux, Nginx, MySQL, PHP (LEMP) stack on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04)
+* [How to change PostgreSQL user password?](https://stackoverflow.com/questions/12720967/how-to-change-postgresql-user-password)
+* [login to psql user with a password over TCP](https://stackoverflow.com/questions/2172569/how-do-i-login-and-authenticate-to-postgresql-after-a-fresh-install)
+* [SteveWooding](https://github.com/SteveWooding/fullstack-nanodegree-linux-server-config)
+* [Postgres login commands](https://alvinalexander.com/blog/post/postgresql/log-in-postgresql-database)
+* [How To Use Roles and Manage Grant Permissions in PostgreSQL on a VPS](https://www.digitalocean.com/community/tutorials/how-to-use-roles-and-manage-grant-permissions-in-postgresql-on-a-vps--2)
+* [Remove a directory with files and subdirectories](https://thishosting.rocks/remove-directory-linux/)
+* [Remove a Linux user](https://in.godaddy.com/help/remove-a-linux-user-19158)
+* [WSGIScriptAlias](https://modwsgi.readthedocs.io/en/develop/configuration-directives/WSGIScriptAlias.html)
+* [Install and Configure mod_wsgi on Ubuntu 16.04](https://devops.profitbricks.com/tutorials/install-and-configure-mod_wsgi-on-ubuntu-1604-1/)
+* [Udacity Linux Server Configuration Project](https://stevenwooding.com/linux-server/)
+* [How to change PostgreSQL user password?](https://stackoverflow.com/questions/12720967/how-to-change-postgresql-user-password)
+* [How To Deploy a Flask Application on an Ubuntu VPS](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
+* [Check your servers error log](https://stackoverflow.com/questions/6438475/the-server-encountered-an-internal-error-or-misconfiguration-and-was-unable-to-c)
+* [Sean-Holcomb](https://github.com/Sean-Holcomb/Linux-Server-Configuration#install-git-and-protect-git)
+* [Unable to find a source package for psycopg2](https://stackoverflow.com/questions/14391804/e-unable-to-find-a-source-package-for-psycopg2-or-use-pip-with-virtualenv)
+* [ unable to locate source package](https://askubuntu.com/questions/826890/apt-build-dep-fails-unable-to-locate-source-package-despite-deb-src-lines-pres)
+* [Tarja M](https://github.com/otsop110/fullstack-nanodegree-linux-server-configuration)
+* [ImportError: No module named psycopg2](https://stackoverflow.com/questions/12906351/importerror-no-module-named-psycopg2)
+* [Apache http server log files](https://blog.codeasite.com/how-do-i-find-apache-http-server-log-files/)
+* [WSGI script mysql query](https://stackoverflow.com/questions/23047644/how-to-place-wsgi-script-mysql-query-into-a-function)
+* [xip.io](http://xip.io/)
