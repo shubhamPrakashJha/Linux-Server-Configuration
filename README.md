@@ -494,3 +494,20 @@ Enable Key Based Authentication
     ```
     RedirectMatch 404 /\.git
     ```
+* To Disable root login
+    1. oprn `/etc/ssh/sshd_config`:
+    ```
+    sudo nano /etc/ssh/sshd_config
+    ```
+    2. Replace `PermitRootLogin without-password` to :
+    ```
+    PermitRootLogin no
+    ```
+    2. uncomment the following line
+    ```
+    PasswordAuthentication no
+    ```
+    2. Restart SSH Service
+    ```
+    sudo service ssh restart
+    ```
