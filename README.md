@@ -291,8 +291,12 @@ Enable Key Based Authentication
         1. As you can see, the first two security lines specify "local" as the scope that they apply to. This means they are using Unix/Linux domain sockets.
         
         1. The second two declarations are remote, but if we look at the hosts that they apply to (127.0.0.1/32 and ::1/128), we see that these are interfaces that specify the local machine.
-            
+                
     * Create a new database user named `catalog` that has limited permissions to your catalog application database.
+        1. Create a linux user named `catalog`
+            ```commandline
+            sudo adduser catalog
+            ```
         
         1. Create a PostgreSQL user(role) called `catalog` with:
             ```commandline
@@ -314,9 +318,13 @@ Enable Key Based Authentication
             ```
             \du
             ```
-        * Select **Owner**(Role) `catalog`:
+        * Login to **Owner**(Role) `catalog` by typing UNIX command:
             ```
-            \c catalog
+            psql -h localhost -U user_name -p <port>
+            ```
+        * If you don't know the port, you can always get it by running the following, as the postgres user,
+            ```
+            SHOW port;
             ```
         * Show all **databases** having `catalog` as owner:
             ```
@@ -336,7 +344,7 @@ Enable Key Based Authentication
             psql
             ```
 
-#### STEP 11 : Install git
+#### STEP 12 : Install git
 * Install git using command:
     ```commandline
     sudo apt-get install git
