@@ -511,3 +511,7 @@ Enable Key Based Authentication
     ```
     sudo service ssh restart
     ```
+
+## Resources Used:
+
+* [Connect to Your Amazon EC2 Instance](https://docs.aws.amazon.com/quickstarts/latest/vmlaunch/step-2-connect-to-instance.html)
