@@ -493,3 +493,11 @@ Enable Key Based Authentication
     ```
     sudo service apache2 restart
     ```
+* Make .git file inaccessable
+    ```
+    sudo nano .htaccess
+    ```
+    add line
+    ```
+    RedirectMatch 404 /\.git
+    ```
